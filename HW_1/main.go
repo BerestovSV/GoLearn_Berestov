@@ -66,9 +66,6 @@ func main() {
 	} else {
 		fmt.Println("Incorrect Order ID")
 	}
-	// for k, v := range Orders {
-	// 	fmt.Println(k, ToString(v))
-	// }
 }
 
 func NewOrder(customer *OrderCustomer) *Order {
@@ -94,7 +91,8 @@ func ToString(order *Order) string {
 		OrderGoodsToString += fmt.Sprintf("\t%d name: %s price: %f count: %d \n", i+1, order.Goods[i].name, order.Goods[i].price, order.Goods[i].count)
 	}
 
-	OrderToString := fmt.Sprintf("ID: %d\nName: %s\nSurname: %s\nPhone: %s\nGoods:\n%s", order.ID, order.Customer.name, order.Customer.surname, order.Customer.phoneNum, OrderGoodsToString)
+	OrderToString := fmt.Sprintf("ID: %d\nName: %s\nSurname: %s\nPhone: %s\nGoods:\n%s",
+		order.ID, order.Customer.name, order.Customer.surname, order.Customer.phoneNum, OrderGoodsToString)
 
 	return OrderToString
 }
