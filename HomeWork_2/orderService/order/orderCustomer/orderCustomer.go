@@ -1,15 +1,15 @@
 package orderCustomer
 
 type OrderCustomer struct {
-	name     string
-	surname  string
-	phoneNum string
+	Name     string
+	Surname  string
+	PhoneNum string
 }
 
 func New(name string, surname string, phoneNum string) OrderCustomer {
 	return OrderCustomer{
-		name:     name,
-		surname:  surname,
-		phoneNum: phoneNum,
+		Name:     name,
+		Surname:  surname,
+		PhoneNum: phoneNum,
 	}
 }

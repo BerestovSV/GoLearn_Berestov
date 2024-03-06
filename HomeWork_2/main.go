@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"main/orderService/order"
 	"main/orderService/order/orderCustomer"
 	"main/orderService/repository/orderRepository"
@@ -8,17 +9,29 @@ import (
 
 func main() {
 
-	// Создать покупателя
+	// 1.	Создать заказ с покупателем и добавить в него товары
 	customer1 := orderCustomer.New("Tom", "Black", "8-984-156-19-66")
+
 	order1 := order.New(customer1)
 
-	// Добавить в заказ 3 произвольных товара
 	order1.AddGood("opium", 10.0, 2)
 	order1.AddGood("cola", 2.0, 3)
 	order1.AddGood("snaks", 1.0, 4)
+	fmt.Println("1\n", order1.String())
 
-	orderRepository.Store(order1)
+	// 2.	Удалить часть товаров: Если первый аргумент "1", то удаляем все товары, если "0", то удаляется товар по указанной позиции
+	order1.DeleteGood(0, 3)
+	fmt.Println("\n2\n", order1.String())
 
+	// 3.	Выполнить заказ
+	orderRepository.Store(&order1)
+	fmt.Println("\n3\n", order1.String())
+
+	// 4.	Попытаться добавить товар в заказ - обработать ошибку и вывести на экран
+	order1.AddGood("spice", 4.0, 10)
+
+	// 5.	Попытаться удалить товар из заказа - также обработать ошибку
+	order1.DeleteGood(1, 0)
 }
 
 // 	// Повторить с п.1 - создать еще один заказ
@@ -46,41 +59,4 @@ func main() {
 // 	} else {
 // 		fmt.Println("Incorrect Order ID")
 // 	}
-// }
-
-// // инициируем заказ, формируем ему ID и присваиваем имя, фамилию, номер телефона покупателю
-// func NewOrder(customer *OrderCustomer) *Order {
-// 	var NewOrder = Order{
-// 		ID:       len(Orders) + 1,
-// 		Customer: customer,
-// 	}
-
-// 	Orders[NewOrder.ID] = &NewOrder
-
-// 	return &NewOrder
-// }
-
-// func AddGood(order order.Order, name string, price float64, count int) {
-// 	order.Goods = append(order.Goods, orderGood.New(name, price, count))
-
-// 	orders_base.OrderCreate(order)
-// }
-
-// func ToString(order *Order) string {
-// 	var OrderGoodsToString string
-// 	for i := range order.Goods {
-// 		OrderGoodsToString += fmt.Sprintf("\t%d name: %s price: %f count: %d \n", i+1, order.Goods[i].name, order.Goods[i].price, order.Goods[i].count)
-// 	}
-
-// 	OrderToString := fmt.Sprintf("ID: %d\nName: %s\nSurname: %s\nPhone: %s\nGoods:\n%s",
-// 		order.ID, order.Customer.name, order.Customer.surname, order.Customer.phoneNum, OrderGoodsToString)
-
-// 	return OrderToString
-// }
-
-// func GetOrderByID(ID int) (*Order, error) {
-// 	if v, ok := Orders[ID]; ok {
-// 		return v, nil
-// 	}
-// 	return nil, fmt.Errorf("incorrect order id")
 // }
