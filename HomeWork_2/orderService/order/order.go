@@ -64,3 +64,12 @@ func (order *Order) DeleteGood(flag byte, goodNum int) {
 func (order *Order) Init() {
 	order.Status = completed
 }
+
+// 	// обработка ошибок, для справки
+// 	fmt.Println("GetOrder(1)")
+// 	o1, err1 := GetOrderByID(1)
+// 	if err1 == nil {
+// 		fmt.Println(ToString(o1))
+// 	} else {
+// 		fmt.Println("Incorrect Order ID")
+// 	}

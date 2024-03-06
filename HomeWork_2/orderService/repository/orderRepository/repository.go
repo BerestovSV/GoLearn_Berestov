@@ -21,9 +21,7 @@ func Store(order *order.Order) error {
 
 // удаление заказа
 func Delete(id int) error {
-	// if _, ok := orders[id]; ok {
 	delete(orders, id)
-	// }
 	return fmt.Errorf("incorrect order id")
 }
 

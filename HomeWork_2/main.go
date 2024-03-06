@@ -33,30 +33,3 @@ func main() {
 	// 5.	Попытаться удалить товар из заказа - также обработать ошибку
 	order1.DeleteGood(1, 0)
 }
-
-// 	// Повторить с п.1 - создать еще один заказ
-// 	customer2 := OrderCustomer{"Adam", "Drown", "8-999-156-19-66"}
-// 	_ = NewOrder(&customer2)
-
-// 	// Поптаться получить заказ по ID и вывести его на экран
-// 	fmt.Println("GetOrder(1)")
-// 	o1, err1 := GetOrderByID(1)
-// 	if err1 == nil {
-// 		fmt.Println(ToString(o1))
-// 	} else {
-// 		fmt.Println("Incorrect Order ID")
-// 	}
-// 	o2, err2 := GetOrderByID(2)
-// 	if err2 == nil {
-// 		fmt.Println(ToString(o2))
-// 	} else {
-// 		fmt.Println("Incorrect Order ID")
-// 	}
-// 	// Попытаться получить несуществующий заказ и вывести его на экран
-// 	o3, err3 := GetOrderByID(3)
-// 	if err3 == nil {
-// 		fmt.Println(ToString(o3))
-// 	} else {
-// 		fmt.Println("Incorrect Order ID")
-// 	}
-// }
